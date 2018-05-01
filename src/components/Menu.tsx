@@ -1,3 +1,4 @@
+import { AppBar } from 'material-ui';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ const Menu = (): JSX.Element => {
 
     return (
         <div>
+            <AppBar title="Jell Blog" />
             <ul>
                 <li><NavLink exact={true} to="/" activeStyle={activeStyle}>Home</NavLink></li>
                 <li><NavLink exact={true} to="/about" activeStyle={activeStyle}>About</NavLink></li>

@@ -1,3 +1,4 @@
+import { MuiThemeProvider } from 'material-ui/styles';
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Menu from '../components/Menu';
@@ -25,7 +26,7 @@ class App extends React.Component<Props, State> {
         }
         
         return (
-            <div>
+            <MuiThemeProvider>
                 <Menu />
                 {SplitMe && <SplitMe /> /*유효하면 띄워 줌.*/}
                 <button onClick={this.showSplitMe}>ClickMe</button>
@@ -35,7 +36,7 @@ class App extends React.Component<Props, State> {
                     <Route path="/about" component={About} />
                 </Switch>
                 <Route path="/posts" component={Posts} />
-            </div>
+            </MuiThemeProvider>
         );
     }
 
