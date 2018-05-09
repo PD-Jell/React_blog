@@ -3,11 +3,11 @@ import { BrowserRouter } from 'react-router-dom';
 import App from '../shared/App';
 
 const Root = (): JSX.Element => {
-    return (
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
 };
 
 export default Root;

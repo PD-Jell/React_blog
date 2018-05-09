@@ -8,7 +8,7 @@ interface State {
 }
 
 class Test extends React.Component<Props, State> {
-  public url: string = 'http://127.0.0.1:8000'
+  public url: string = 'http://127.0.0.1:8000/post/1/'
   private isLoaded: boolean = false
   // private url: string = 'https://www.google.com'
   constructor(props: Props) {
@@ -18,7 +18,6 @@ class Test extends React.Component<Props, State> {
   public call() {
     utils.doFetch(this.url, utils.HttpMethod.GET).then((res: Response) => {
       this.isLoaded = true
-      alert(`then = ${res.status}`)
       if (res.ok) {
         return res.json()
       }

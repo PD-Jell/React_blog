@@ -1,3 +1,4 @@
+export * from './prefix'
 
 export enum HttpMethod {
   GET = 'GET',
@@ -12,12 +13,12 @@ export const doFetch = (url: string, method: HttpMethod, data?: any) => {
     headers.append('Content-Type', 'application/json');
   }
   const requestOption: RequestInit = {
-      method: method,
-      mode: 'cors',
-      headers: headers
+    method: method,
+    mode: 'cors',
+    headers: headers
   };
   if (method === HttpMethod.POST && data) {
-      requestOption.body = JSON.stringify(data);
+    requestOption.body = JSON.stringify(data);
   }
   return fetch(url, requestOption);
 };
