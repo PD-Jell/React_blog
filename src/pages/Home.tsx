@@ -10,8 +10,9 @@ class Home extends React.Component<Props> {
 
   render() {
     return (
-      <div>
+      <div className="home">
         <h2>환영합니다!</h2>
+        <p>이 블로그는 개인 블로그입니다.</p>
       </div>
     )
   }

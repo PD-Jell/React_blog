@@ -1,11 +1,18 @@
-import * as H from 'history';
-import { Drawer, MenuItem } from 'material-ui';
-import { MuiThemeProvider } from 'material-ui/styles';
-import * as React from 'react';
-import { Route, Router, Switch  } from 'react-router-dom';
-import Menu from '../components/Menu';
-import { About, Home, Post } from '../pages/index';
+import * as H from 'history'
+import { Drawer, MenuItem } from 'material-ui'
+import {
+  // darkBaseTheme,
+  getMuiTheme,
+  lightBaseTheme,
+  MuiThemeProvider
+} from 'material-ui/styles'
+import * as React from 'react'
+import { Route, Router, Switch  } from 'react-router-dom'
+import Menu from '../components/Menu'
+import { About, Home, Post } from '../pages/index'
 import Test from '../pages/Test'
+
+import '../res/css/index.css'
 
 
 interface Props {
@@ -14,7 +21,7 @@ interface Props {
 
 interface State {
   SplitMe?: () => JSX.Element
-  open: boolean,
+  open: boolean
   history: H.History
 }
 
@@ -24,7 +31,7 @@ class App extends React.Component<Props, State> {
     super(props)
     this.state = {
       open: false,
-      history: H.createBrowserHistory()
+      history: H.createBrowserHistory(),
     }
   }
 
@@ -45,9 +52,8 @@ class App extends React.Component<Props, State> {
       SplitMe = this.state.SplitMe
     }
 
-
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
       <Router history={this.state.history}>
         <div style={{ height: '100%' }}>
           <Menu leftClick={() => this.handleMenuBtnClicked(!this.state.open)} />
