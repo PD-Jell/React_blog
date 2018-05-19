@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from '../shared/App';
 
 
 const Root = (): JSX.Element => {
   return (
-    <BrowserRouter>
-      <App history={history}/>
-    </BrowserRouter>
+    <Router>
+      <App />
+    </Router>
   );
 };
 

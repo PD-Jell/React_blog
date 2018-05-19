@@ -1,14 +1,11 @@
 import * as H from 'history'
-import { Drawer, MenuItem } from 'material-ui'
+import { Theme, createMuiTheme } from '@material-ui/core'
 import {
-  // darkBaseTheme,
-  getMuiTheme,
-  lightBaseTheme,
   MuiThemeProvider
-} from 'material-ui/styles'
+} from '@material-ui/core'
 import * as React from 'react'
-import { Route, Router, Switch  } from 'react-router-dom'
-import Menu from '../components/Menu'
+import { Route, Router, Switch } from 'react-router-dom'
+import Header from '../components/Header'
 import { About, Home, Post } from '../pages/index'
 import Test from '../pages/Test'
 
@@ -16,13 +13,12 @@ import '../res/css/index.css'
 
 
 interface Props {
-  history?: any
 }
 
 interface State {
   SplitMe?: () => JSX.Element
-  open: boolean
   history: H.History
+  theme: Theme
 }
 
 class App extends React.Component<Props, State> {
@@ -30,21 +26,12 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      open: false,
       history: H.createBrowserHistory(),
+      theme: createMuiTheme()
     }
   }
 
-  handleMenuBtnClicked = (open: boolean): void => {
-    this.setState({
-      open: open
-    })
-  }
 
-  handleSideBtnClicked = (menu: string): void => {
-    console.log(this.props.history)
-      this.state.history.push(menu)
-  }
 
   public render() {
     let SplitMe
@@ -53,19 +40,10 @@ class App extends React.Component<Props, State> {
     }
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+      <MuiThemeProvider theme={this.state.theme}>
       <Router history={this.state.history}>
         <div style={{ height: '100%' }}>
-          <Menu leftClick={() => this.handleMenuBtnClicked(!this.state.open)} />
-          <Drawer
-            docked={false}
-            width={200}
-            open={this.state.open}
-            onRequestChange={(open) => this.handleMenuBtnClicked(open)}
-          >
-            <MenuItem onClick={() => this.handleSideBtnClicked('/')}>홈</MenuItem>
-            <MenuItem onClick={() => this.handleSideBtnClicked('/about')}>About</MenuItem>
-          </Drawer>
+          <Header history={this.state.history} />
           {SplitMe && <SplitMe /> /*유효하면 띄워 줌. */}
           {/* <button onClick={this.showSplitMe}>ClickMe</button> */}
           <Route exact={true} path="/" component={Home} />
