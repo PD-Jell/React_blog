@@ -1,7 +1,24 @@
 // import Axios from 'axios';
 import * as React from 'react';
+import { Paper, Theme, Typography } from '@material-ui/core';
+import { StyleRules } from '@material-ui/core/styles';
 
-interface Props { }
+interface Props {
+  theme: Theme
+}
+
+const styles = (theme: Theme): StyleRules => {
+  return {
+    root: theme.mixins.gutters({
+      margin: "auto",
+      minWidth: 300,
+      maxWidth: 600,
+      paddingTop: 16,
+      paddingBottom: 16,
+      marginTop: theme.spacing.unit * 3,
+    })
+  }
+}
 
 class Home extends React.Component<Props> {
   constructor(props: Props) {
@@ -11,8 +28,21 @@ class Home extends React.Component<Props> {
   render() {
     return (
       <div className="home">
-        <h2>환영합니다!</h2>
-        <p>이 블로그는 개인 블로그입니다.</p>
+        <div>
+          <h2>환영합니다!</h2>
+          <p>이 블로그는 개인 블로그입니다.</p>
+        </div>
+        <div>
+        <Paper style={styles(this.props.theme).root} elevation={4} >
+          <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
+          <Typography variant="headline" component="h3">
+            This is a sheet of paper.
+          </Typography>
+          <Typography component="p">
+            Paper can be used to build surface or other elements for your application.
+          </Typography>
+        </Paper>
+        </div>
       </div>
     )
   }

@@ -42,14 +42,14 @@ export default class Header extends React.Component<Props, State> {
     this.setState({
       rightOpen: event.currentTarget
     })
-    console.log('handleClick', Boolean(this.state.rightOpen))
+    // console.log('handleClick', Boolean(this.state.rightOpen))
   }
 
   handleClose = () => {
     this.setState({
       rightOpen: undefined
     })
-    console.log('handleClose', Boolean(this.state.rightOpen))
+    // console.log('handleClose', Boolean(this.state.rightOpen))
   }
 
   handleMenuBtnClicked = (open: boolean): void => {
@@ -58,13 +58,13 @@ export default class Header extends React.Component<Props, State> {
     })
   }
 
-  rightMenuBtnClicked = (event: React.FormEvent<SVGSVGElement>) => {
-    console.log(event.target)
+  rightMenuBtnClicked = (event: any) => {
+    console.log(event.target.value)
   }
 
 
   handleSideBtnClicked = (menu: string): void => {
-    console.log(this.props.history)
+    // console.log(this.props.history)
     this.props.history.push(menu)
   }
 

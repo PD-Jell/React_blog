@@ -46,7 +46,7 @@ class App extends React.Component<Props, State> {
           <Header history={this.state.history} />
           {SplitMe && <SplitMe /> /*유효하면 띄워 줌. */}
           {/* <button onClick={this.showSplitMe}>ClickMe</button> */}
-          <Route exact={true} path="/" component={Home} />
+          <Route exact={true} path="/" component={() => <Home theme={this.state.theme}/>} />
           <Switch>
             <Route path="/about/:name" component={About} />
             <Route path="/about" component={About} />
