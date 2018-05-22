@@ -6,6 +6,7 @@ import {
 import * as React from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { About, Home, Post } from '../pages/index'
 import Test from '../pages/Test'
 
@@ -41,19 +42,20 @@ class App extends React.Component<Props, State> {
 
     return (
       <MuiThemeProvider theme={this.state.theme}>
-      <Router history={this.state.history}>
-        <div style={{ height: '100%' }}>
-          <Header history={this.state.history} />
-          {SplitMe && <SplitMe /> /*유효하면 띄워 줌. */}
-          {/* <button onClick={this.showSplitMe}>ClickMe</button> */}
-          <Route exact={true} path="/" component={() => <Home theme={this.state.theme}/>} />
-          <Switch>
-            <Route path="/about/:name" component={About} />
-            <Route path="/about" component={About} />
-          </Switch>
-          <Route path="/posts/:id" component={Post} />
-          <Route path="/test" component={Test} />
-        </div>
+        <Router history={this.state.history}>
+          <div style={{ height: '100%' }}>
+            <Header history={this.state.history} />
+            {SplitMe && <SplitMe /> /*유효하면 띄워 줌. */}
+            {/* <button onClick={this.showSplitMe}>ClickMe</button> */}
+            <Route exact={true} path="/" component={() => <Home theme={this.state.theme} />} />
+            <Switch>
+              <Route path="/about/:name" component={About} />
+              <Route path="/about" component={About} />
+            </Switch>
+            <Route path="/posts/:id" component={Post} />
+            <Route path="/test" component={Test} />
+            <Footer />
+          </div>
         </Router>
       </MuiThemeProvider>
     );

@@ -33,15 +33,33 @@ class Home extends React.Component<Props> {
           <p>이 블로그는 개인 블로그입니다.</p>
         </div>
         <div>
-        <Paper style={styles(this.props.theme).root} elevation={4} >
-          <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
-          <Typography variant="headline" component="h3">
-            This is a sheet of paper.
+          <Paper style={styles(this.props.theme).root} elevation={4} >
+            <Typography variant="headline" component="h1">
+              개발
           </Typography>
-          <Typography component="p">
-            Paper can be used to build surface or other elements for your application.
+            <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
+            <Typography component="p">
+              Paper can be used to build surface or other elements for your application.
           </Typography>
-        </Paper>
+          </Paper>
+          <Paper style={styles(this.props.theme).root} elevation={4} >
+            <Typography variant="headline" component="h1">
+              자전거
+          </Typography>
+            <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
+            <Typography component="p">
+              Paper can be used to build surface or other elements for your application.
+          </Typography>
+          </Paper>
+          <Paper style={styles(this.props.theme).root} elevation={4} >
+            <Typography variant="headline" component="h1">
+              게임
+          </Typography>
+            <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
+            <Typography component="p">
+              Paper can be used to build surface or other elements for your application.
+          </Typography>
+          </Paper>
         </div>
       </div>
     )

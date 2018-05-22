@@ -86,6 +86,7 @@ export default class Header extends React.Component<Props, State> {
               aria-owns={Boolean(this.state.rightOpen) ? 'simple-menu' : undefined}
               aria-haspopup="true"
               onClick={(event) => { !Boolean(this.state.rightOpen) ? this.handleClick(event) : this.handleClose() }}
+              style={{color: 'white'}}
             >
               More
             </Button>

@@ -9,6 +9,9 @@
 # production
 /build
 
+# test
+/src/App.test.tsx
+
 # misc
 .DS_Store
 .env.local
