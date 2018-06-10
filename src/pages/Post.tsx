@@ -23,9 +23,9 @@ class Post extends React.Component<Props, State> {
     const url: string =
     ApiServerUrl + ApiServerAddr.get.post + '/' + id + '/'
     doFetch(url, HttpMethod.GET).then((res: Response) => {
-      if (res.ok) {
+      if (res.ok)
         return res.json()
-      }
+
       throw Error('failed')
     }).then((context: any) => {
       this.setState({

@@ -7,10 +7,12 @@
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
-      "node_modules/**/*.ts"
+      "node_modules/**/*.ts",
+      "src/registerServiceWorker.ts"
     ]
   },
   "rules": {
+    "curly": [true, "as-needed"],
     "interface-name": false,
     "jsx-no-lambda": false,
     "member-access": false,

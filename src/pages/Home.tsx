@@ -2,9 +2,19 @@
 import * as React from 'react';
 import { Paper, Theme, Typography } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
+import { ApiServerUrl, ApiServerAddr, HttpMethod, doFetch } from '../utils';
+import { Post } from '../models/Post';
+import { ApiResult } from '../utils/result';
+import { Category } from '../utils/enum';
 
 interface Props {
   theme: Theme
+}
+
+interface State {
+  computer: Post[]
+  bicycle: Post[]
+  game: Post[]
 }
 
 const styles = (theme: Theme): StyleRules => {
@@ -20,9 +30,47 @@ const styles = (theme: Theme): StyleRules => {
   }
 }
 
-class Home extends React.Component<Props> {
+class Home extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
+    this.state = {
+      computer: [],
+      bicycle: [],
+      game: [],
+    }
+  }
+
+  componentWillMount() {
+    doFetch(ApiServerUrl + ApiServerAddr.get.post, HttpMethod.GET)
+      .then((res: Response) => {
+        if (res.ok)
+          return res.json()
+        else
+          throw res.json()
+      }).then((json: ApiResult) => {
+        json.object.forEach((post: Post) => {
+          switch (post.category) {
+            case Category.Computer:
+              const computer: Post[] = this.state.computer
+              computer.push(post)
+              this.setState({ computer: computer })
+              break
+            case Category.Bicycle:
+              const bicycle: Post[] = this.state.bicycle
+              bicycle.push(post)
+              this.setState({ bicycle: bicycle })
+              break
+            case Category.Game:
+              const game: Post[] = this.state.game
+              game.push(post)
+              this.setState({ game: game })
+              break
+          }
+        });
+        console.log(JSON.stringify(this.state))
+      }).catch((json: ApiResult) => {
+        console.log(JSON.stringify(json))
+      })
   }
 
   render() {
@@ -37,27 +85,27 @@ class Home extends React.Component<Props> {
             <Typography variant="headline" component="h1">
               개발
           </Typography>
-            <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
+            <img src="https://4.imimg.com/data4/CO/YS/MY-29352968/samsung-desktop-computer-500x500.jpg" />
             <Typography component="p">
-              Paper can be used to build surface or other elements for your application.
+              {JSON.stringify(this.state.computer)}
           </Typography>
           </Paper>
           <Paper style={styles(this.props.theme).root} elevation={4} >
             <Typography variant="headline" component="h1">
               자전거
           </Typography>
-            <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
+            <img src="https://ph-test-11.slatic.net/p/6/cannondale-trail-5-7398-55694901-5893bfdd4145bfefef7f7c2d5376da2c-catalog.jpg_340x340q80.jpg_.webp" />
             <Typography component="p">
-              Paper can be used to build surface or other elements for your application.
+              {JSON.stringify(this.state.bicycle)}
           </Typography>
           </Paper>
           <Paper style={styles(this.props.theme).root} elevation={4} >
             <Typography variant="headline" component="h1">
               게임
           </Typography>
-            <img src="http://api.cocoachina.com/uploads/20160601/1464776396717413.png" />
+            <img src="https://cms-assets.tutsplus.com/uploads/users/34/syllabuses/1117/preview_image/vg.jpg" />
             <Typography component="p">
-              Paper can be used to build surface or other elements for your application.
+              {JSON.stringify(this.state.game)}
           </Typography>
           </Paper>
         </div>

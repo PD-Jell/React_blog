@@ -22,8 +22,7 @@ const render = (Component: any) => {
 
 render(Root)
 
-if ((module as any).hot) {
+if ((module as any).hot)
   (module as any).hot.accept('./client/Root', () => { render(Root) })
-}
 
 registerServiceWorker();

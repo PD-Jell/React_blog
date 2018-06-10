@@ -26,9 +26,9 @@ export default function asyncComponent(getComponent: any) {
 
     public render() {
       const Component = this.state.Component
-      if (Component) {
+      if (Component)
         return <Component {...this.props} />
-      }
+
       return AsyncComponent.Component
     }
 

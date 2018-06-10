@@ -11,6 +11,7 @@ import { About, Home, Post } from '../pages/index'
 import Test from '../pages/Test'
 
 import '../res/css/index.css'
+import Write from '../pages/Write';
 
 
 interface Props {
@@ -36,9 +37,9 @@ class App extends React.Component<Props, State> {
 
   public render() {
     let SplitMe
-    if (this.state) {
+    if (this.state)
       SplitMe = this.state.SplitMe
-    }
+
 
     return (
       <MuiThemeProvider theme={this.state.theme}>
@@ -53,6 +54,7 @@ class App extends React.Component<Props, State> {
               <Route path="/about" component={About} />
             </Switch>
             <Route path="/posts/:id" component={Post} />
+            <Route path="/write" component={Write} />
             <Route path="/test" component={Test} />
             <Footer />
           </div>

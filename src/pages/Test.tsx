@@ -18,9 +18,9 @@ class Test extends React.Component<Props, State> {
   public call() {
     utils.doFetch(this.url, utils.HttpMethod.GET).then((res: Response) => {
       this.isLoaded = true
-      if (res.ok) {
+      if (res.ok)
         return res.json()
-      }
+
       throw Error(JSON.stringify(res))
     }).then((result) => {
       this.setState({
