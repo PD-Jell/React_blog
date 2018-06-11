@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /.vscode
-/utils/url.ts
+/src/utils/url.ts
