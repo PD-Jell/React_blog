@@ -67,7 +67,6 @@ class Home extends React.Component<Props, State> {
               break
           }
         });
-        console.log(JSON.stringify(this.state))
       }).catch((json: ApiResult) => {
         console.log(JSON.stringify(json))
       })
